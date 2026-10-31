@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>CyberScan | فحص الروابط والـ QR</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><span class="brand-icon">⌁</span><span>Cyber<span class="accent">Scan</span><small>حماية تبدأ بخطوة</small></span></a><span class="live"><i></i> فحص عبر VirusTotal</span></header>
+<main class="container">
+  <section class="hero">
+    <div class="eyebrow">أمانك الرقمي أولاً</div>
+    <h1>تأكد من الرابط<br><span>قبل ما تفتحه</span></h1>
+    <p>افحص الروابط باستخدام نتائج VirusTotal الحقيقية، أو استخرج رابطاً من رمز QR ثم افحصه قبل الزيارة.</p>
+    <div class="hero-points"><span>✓ تحليل متعدد المحركات</span><span>✓ فحص QR من صورة أو كاميرا</span><span>✓ سجل آخر الفحوصات</span></div>
+  </section>
+
+  <section class="panel scan-panel">
+    <div class="panel-heading"><div><span class="step">01</span><h2>فحص رابط</h2></div><span class="subtle">URL SCANNER</span></div>
+    <form id="scan-form">
+      <label for="url-input">الصق الرابط هنا</label>
+      <div class="url-row"><input id="url-input" type="text" inputmode="url" placeholder="https://example.com" autocomplete="url" required><button class="primary" type="submit" id="scan-btn"><span>افحص الرابط</span><b>←</b></button></div>
+    </form>
+    <div class="privacy-note">ⓘ لا تفتح الرابط بنفسك. يتم إرسال عنوانه إلى VirusTotal لفحصه.</div>
+    <div id="result" class="result hidden" aria-live="polite"></div>
+  </section>
+
+  <section class="panel qr-panel">
+    <div class="panel-heading"><div><span class="step">02</span><h2>فحص رمز QR</h2></div><span class="subtle">QR SCANNER</span></div>
+    <p class="section-copy">ارفع صورة تحتوي على QR أو استخدم الكاميرا. إذا كان الرمز يحتوي على رابط، تقدر تفحصه مباشرة.</p>
+    <div class="qr-actions"><label class="secondary file-label" for="qr-file">رفع صورة QR <span>＋</span></label><input type="file" id="qr-file" accept="image/*"><button type="button" class="secondary" id="camera-btn">تشغيل الكاميرا <span>◉</span></button><button type="button" class="text-btn hidden" id="stop-camera">إيقاف الكاميرا</button></div>
+    <div id="qr-reader" class="qr-reader hidden"></div>
+    <div id="qr-status" class="qr-status hidden" aria-live="polite"></div>
+    <div id="qr-found" class="qr-found hidden"><label for="qr-url">الرابط المستخرج</label><input id="qr-url" type="text" readonly><button id="scan-qr-url" class="primary" type="button">افحص الرابط المستخرج ←</button></div>
+    <p class="privacy-note">ⓘ معالجة صورة QR تتم داخل المتصفح باستخدام مكتبة خارجية. لا ترفع صورة تحتوي معلومات شخصية.</p>
+  </section>
+
+  <section class="panel history-panel">
+    <div class="panel-heading"><div><span class="step">03</span><h2>آخر الفحوصات</h2></div><button id="refresh-history" class="text-btn">تحديث ↻</button></div>
+    <div id="history" class="history-list"><div class="empty">جاري تحميل السجل…</div></div>
+  </section>
+  <section class="disclaimer"><strong>مهم:</strong> نتيجة «لم تُكتشف تهديدات» لا تعني أن الرابط آمن 100%. لا تدخل كلمة المرور أو بيانات البطاقة في موقع لا تثق به. مفتاح API محفوظ في الخادم ولا يظهر في المتصفح.</section>
+</main>
+<footer>CyberScan — مشروع توعوي للأمن السيبراني <span>© 2026</span></footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+<footer class="site-footer" dir="rtl">
+    <p>CyberScan © 2026</p>
+    <p>من تطوير <strong>عبدالرحمن سيف</strong></p>
+    <p>أداة لفحص الروابط المشبوهة وتحليلها</p>
+</footer>
+</body></html>

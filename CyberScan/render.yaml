@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cyberscan-ar
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /health
+    envVars:
+      - key: VIRUSTOTAL_API_KEY
+        sync: false
